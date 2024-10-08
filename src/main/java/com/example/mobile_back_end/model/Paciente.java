@@ -5,27 +5,34 @@ import jakarta.persistence.*;
 import lombok.Data;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 @Data
 @Entity
 @Table(name = "paciente")
-public class Paciente extends Pessoa{
+public class Paciente{
 
-    @Column(name = "cpf", length = 11, nullable = false, unique = true)
-    private String cpf;
+    @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Integer id;
 
-    @JsonIgnore
-    @OneToMany(mappedBy = "paciente", fetch = FetchType.LAZY)
-    private List<Agendamento> agendamentos = new ArrayList<>();
+    @Column(name = "email", nullable = false)
+    private String email;
 
-    @Column (name="senha", length = 30, nullable = true, unique = false)
+    @Column (name="senha", length = 16, nullable = false )
     private String senha;
 
-    private String getSenha() {
-        return this.senha;
-    }
+    @Column(name = "nome", nullable = false)
+    private String nome;
 
+    @Column(name = "cpf", length = 14, nullable = false, unique = true)
+    private String cpf;
+
+    @Column(name = "telefone", length = 15, nullable = false)
+    private String telefone;
+
+    @Column(name = "dataNascimento", length = 10, nullable = false)
+    private Date dataNascimento;
 
 
 }

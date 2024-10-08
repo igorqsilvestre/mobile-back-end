@@ -1,6 +1,7 @@
 package com.example.mobile_back_end.repository;
 
-import ads4.fatesg.pbbellavisage.model.Paciente;
+
+import com.example.mobile_back_end.model.Paciente;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 import java.util.Optional;
