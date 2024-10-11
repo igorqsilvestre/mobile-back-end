@@ -1,6 +1,7 @@
 package com.example.mobile_back_end.model;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import jakarta.persistence.*;
 import lombok.Data;
 
@@ -33,6 +34,11 @@ public class Paciente{
 
     @Column(name = "dataNascimento", length = 10, nullable = false)
     private Date dataNascimento;
+
+    @JsonIgnoreProperties() // Evita recursão infinita
+    @OneToOne(cascade = CascadeType.ALL, orphanRemoval = true)
+    @JoinColumn(name = "endereco_id", referencedColumnName = "id", nullable = false)
+    private Endereco endereco;
 
 
 }
