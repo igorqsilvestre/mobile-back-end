@@ -51,6 +51,14 @@ public class AgendamentoResource implements GenericOperations<Agendamento, Integ
         return agendamentoService.readAll();
     }
 
+    @GetMapping(
+            value = "/paciente/{pacienteId}",
+            produces = {MediaType.APPLICATION_JSON_VALUE}
+    )
+    public List<Agendamento> readByPacienteId(@PathVariable Integer pacienteId) {
+        return agendamentoService.readByPacienteId(pacienteId);
+    }
+
 
     @PatchMapping(
             value = "/{id}",
@@ -79,5 +87,15 @@ public class AgendamentoResource implements GenericOperations<Agendamento, Integ
     @Override
     public void delete(@PathVariable("id") Integer id) {
         agendamentoService.delete(id);
+    }
+
+    @DeleteMapping(
+            value = "/{agendamentoId}/paciente/{pacienteId}"
+    )
+    public void deleteByPacienteId(
+            @PathVariable Integer agendamentoId,
+            @PathVariable Integer pacienteId) {
+
+        agendamentoService.deleteByPacienteId(agendamentoId, pacienteId);
     }
 }

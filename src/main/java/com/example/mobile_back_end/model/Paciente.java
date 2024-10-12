@@ -40,5 +40,9 @@ public class Paciente{
     @JoinColumn(name = "endereco_id", referencedColumnName = "id", nullable = false)
     private Endereco endereco;
 
+    @JsonIgnore
+    @OneToMany(mappedBy = "paciente", fetch = FetchType.LAZY)
+    private List<Agendamento> agendamentos = new ArrayList<>();
+
 
 }

@@ -28,4 +28,9 @@ public class Agendamento {
     @Column(name = "preco", nullable = false)
     private double preco;
 
+    @ManyToOne
+    @JoinColumn(name = "paciente_id", referencedColumnName = "id")
+    private Paciente paciente;
+
+
 }

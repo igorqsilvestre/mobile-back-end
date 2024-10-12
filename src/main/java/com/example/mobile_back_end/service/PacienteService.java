@@ -90,11 +90,13 @@ public class PacienteService implements GenericOperations<Paciente, Integer> {
     }
 
 
+    @Transactional(readOnly = true)
     public Paciente readByEmail(String email) {
         return pacienteRepository.findByEmail(email).orElse(null);
     }
 
 
+    @Transactional(readOnly = true)
     public Paciente readByEmailAndSenha(String email, String senha) {
         return pacienteRepository.findByEmailAndSenha(email,senha).orElse(null);
     }
