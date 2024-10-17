@@ -84,16 +84,8 @@ public class PacienteResource implements GenericOperations<Paciente, Integer> {
     )
     @Override
     public Paciente updatePart(@PathVariable("id")  Integer id, @Valid @RequestBody Paciente entity) {
+        System.out.println(entity.getEndereco());
         return pacienteService.updatePart(id,entity);
-    }
-
-    @PatchMapping(
-            value = "/senha/{senha}",
-            consumes = {MediaType.APPLICATION_JSON_VALUE},
-            produces = {MediaType.APPLICATION_JSON_VALUE}
-    )
-    public Paciente updateSenha(@PathVariable("senha")  String senha, @Valid @RequestBody Paciente entity) {
-        return pacienteService.updateSenha(senha,entity);
     }
 
     @PutMapping(
